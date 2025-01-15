@@ -7,27 +7,27 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 
-// Middleware setup
-app.use(cors()); // Allow cross-origin requests
-app.use(bodyParser.json()); // Parse JSON requests
 
-// Configure Nodemailer for email sending
+app.use(cors()); 
+app.use(bodyParser.json()); 
+
+
 const transporter = nodemailer.createTransport({
-    service: 'gmail',  // Use your email service (Gmail is used here)
+    service: 'gmail',  
     auth: {
-        user: 'venussafari93@gmail.com',  // Your email address
-        pass: 'xavi wdap hujq bbua'          // Your email password (consider using environment variables for security)
+        user: '',  
+        pass: ''          
     }
 });
 
-// Define the POST route for sending the email
+
 app.post('/contact', (req, res) => {
     const { fullName, email, mobileNumber, subject, message } = req.body;
 
     // Email content
     const mailOptions = {
         from: email,  // From the user
-        to: 'venussafari93@gmail.com',  // To your email address
+        to: '',  // To your email address
         subject: subject,
         text: `Message from ${fullName} (${mobileNumber})\n\n${message}`
     };
